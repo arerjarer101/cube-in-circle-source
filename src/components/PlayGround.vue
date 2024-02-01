@@ -87,6 +87,7 @@ function onHeightInput() {
   recalculateOffsets()
   if((Math.pow(rect.value.height, 2) + Math.pow(rect.value.width, 2))/2 > circleRadius.value*circleRadius.value*2) {
     rect.value.height = previousValues.value.height
+    return
   }
   previousValues.value.height = rect.value.height
 }
@@ -94,6 +95,7 @@ function onWidthInput() {
   recalculateOffsets()
   if((Math.pow(rect.value.height, 2) + Math.pow(rect.value.width, 2))/2 > circleRadius.value*circleRadius.value*2) {
     rect.value.width = previousValues.value.width
+    return
   }
   previousValues.value.width = rect.value.width
 }
@@ -101,8 +103,17 @@ function onRadiusInput() {
   recalculateOffsets()
   if((Math.pow(rect.value.height, 2) + Math.pow(rect.value.width, 2))/2 > circleRadius.value*circleRadius.value*2) {
     rect.value.width = previousValues.value.width
+    return
   }
   previousValues.value.width = rect.value.width
+}
+function onCoordXInput() {
+  rectLeft.value = (circle.value.left + circleRadius.value - rect.value.width/2) + 'px'
+  circleLeft.value = circle.value.left + 'px'
+}
+function onCoordYInput() {
+  rectTop.value = (circle.value.top + circleRadius.value - rect.value.height/2) + 'px'
+  circleTop.value = circle.value.top + 'px'
 }
 
 </script>
@@ -111,16 +122,21 @@ function onRadiusInput() {
   <div id="playground" >
     <div id="topbar">
       <div>
-        <label for="height_input">Высота прямоугольника:</label>
+        <label for="height_input">Высота:</label>
         <input id="height_input" @input="onHeightInput" v-model="rect.height" type="number">
       </div>
       <div>
-        <label for="height_input">Ширина прямоугольника:</label>
-        <input id="height_input" @input="onWidthInput" v-model="rect.width" type="number">
+        <label for="width_input">Ширина:</label>
+        <input id="width_input" @input="onWidthInput" v-model="rect.width" type="number">
       </div>
       <div>
-        <label for="height_input">Радиус окружности:</label>
-        <input id="height_input" @input="onRadiusInput" v-model="circleRadius" type="number">
+        <label for="radius_input">Радиус окружности:</label>
+        <input id="radius_input" @input="onRadiusInput" v-model="circleRadius" type="number">
+      </div>
+      <div>
+        <label for="coord_input">Координаты окружности:</label>
+        <input id="coord_input" @input="onCoordXInput" v-model="circle.left" type="number">
+        <input id="coord_input" @input="onCoordYInput" v-model="circle.top" type="number">
       </div>
     </div>
 
