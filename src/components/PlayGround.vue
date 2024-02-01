@@ -134,9 +134,17 @@ function onCoordYInput() {
         <input id="radius_input" @input="onRadiusInput" v-model="circleRadius" type="number">
       </div>
       <div>
-        <label for="coord_input">Координаты окружности:</label>
-        <input id="coord_input" @input="onCoordXInput" v-model="circle.left" type="number">
-        <input id="coord_input" @input="onCoordYInput" v-model="circle.top" type="number">
+        <span>Координаты окружности</span>
+      </div>
+      <div id="coords">
+        <div>
+          <label for="coord_inputX">X:</label>
+          <input id="coord_inputX" @input="onCoordXInput" v-model="circle.left" type="number">
+        </div>
+        <div>
+          <label for="coord_inputY">Y:</label>
+          <input id="coord_inputY" @input="onCoordYInput" v-model="circle.top" type="number">
+        </div>
       </div>
     </div>
 
@@ -188,19 +196,23 @@ rect {
 }
 
 #topbar {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   padding: 20px 5px 10px 10px;
-  height: 5rem;
-  background-color: rgb(15, 13, 23);
   display: flex;
   flex-direction: row;
   gap: 20px;
 }
 
 #topbar input {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   width: 10rem;
   text-align: center;
+}
+
+#coords{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 </style>
